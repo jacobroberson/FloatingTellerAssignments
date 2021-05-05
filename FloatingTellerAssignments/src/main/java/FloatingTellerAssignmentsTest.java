@@ -19,4 +19,20 @@ public class FloatingTellerAssignmentsTest {
 		}
 		assertEquals("ERROR: You did not enter an integer. Please rerun the program", output);
 	}
+	
+	@Test
+	// valid input for NumberOfFloatingTellers
+	public void FloatingTellerInputTestInteger() {
+		String output = null;
+		try {
+			int NumberOfFloatingTellers = 3;
+			List<String> FloatingTellerNames = new ArrayList<String>(NumberOfFloatingTellers);
+			output = "Success!";
+		}
+		// Stop program if an integer is not input
+		catch (IllegalArgumentException e) {
+			output = "ERROR: You did not enter an integer. Please rerun the program";
+		}
+		assertEquals("Success!", output);
+	}
 }
