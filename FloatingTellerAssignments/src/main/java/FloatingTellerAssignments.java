@@ -70,10 +70,17 @@ public class FloatingTellerAssignments {
 	public void BranchesInput() {
 		// Receive input from user on the number of Branches
 		System.out.println("\nPlease enter the number of branch locations: ");
-		NumberOfBranches = Integer.parseInt(sc.nextLine());
-		BranchNames = new ArrayList<String>(NumberOfBranches);
-		BranchCustomers = new int[NumberOfBranches];
-		BranchTellers = new int[NumberOfBranches];
+		try {
+			NumberOfBranches = Integer.parseInt(sc.nextLine());
+			BranchNames = new ArrayList<String>(NumberOfBranches);
+			BranchCustomers = new int[NumberOfBranches];
+			BranchTellers = new int[NumberOfBranches];
+		}
+		// Stop program if an integer is not input
+		catch (IllegalArgumentException e) {
+			System.out.println("ERROR: You did not enter an integer. Please rerun the program");
+			System.exit(0);
+		}
 
 		// Receive input from user on the information for the branches
 		for (i = 0; i < NumberOfBranches; i++) {
