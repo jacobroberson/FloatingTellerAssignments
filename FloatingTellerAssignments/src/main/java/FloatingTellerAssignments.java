@@ -7,7 +7,11 @@ public class FloatingTellerAssignments {
 	
 	// Introduction Script that runs at the start of the program
 	public void IntroScript() {
-	
+		System.out.println("Welcome to the Floating Teller Assignment Program");
+		System.out.println(
+				"Please enter the requested information when prompted in order to generate the floating teller assignments");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------\n");	
 	}
 	
 	// Collects user input regarding floating tellers
