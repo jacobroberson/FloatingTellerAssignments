@@ -1,4 +1,3 @@
-
 // Programmed by Jacob Roberson
 /**
  * @author Jacob Roberson This program is used to assign floating tellers to
@@ -53,13 +52,13 @@ public class FloatingTellerAssignments {
 			System.out.println("ERROR: You did not enter an integer. Please rerun the program");
 			System.exit(0);
 		}
-
+		
 		// Receive input from user on the names of the floating tellers
 		for (i = 0; i < NumberOfFloatingTellers; i++) {
 			System.out.println("Please enter a name to assign to Floating Teller " + (i + 1) + ": ");
 			FloatingTellerNames.add(sc.nextLine());
 		}
-
+		
 		// Display the data entered
 		System.out.println("\nData Entered:");
 		for (i = 0; i < NumberOfFloatingTellers; i++) {
@@ -94,7 +93,7 @@ public class FloatingTellerAssignments {
 					+ " have working on this day? (Please enter a whole number)");
 			BranchTellers[i] = Integer.parseInt(sc.nextLine());
 			// Stop program if an integer is not input
-			if (BranchCustomers[i] <= 0 || BranchTellers[i] <= 0) {
+			if(BranchCustomers[i] <= 0 || BranchTellers[i] <= 0) {
 				System.out.println("ERROR: You did not enter an integer. Please rerun the program");
 				System.exit(0);
 			}
@@ -109,15 +108,14 @@ public class FloatingTellerAssignments {
 		}
 	}
 
-	// Calculates the average number of customers per teller for each branch and
-	// assigns floating tellers
+	// Calculates the average number of customers per teller for each branch and assigns floating tellers
 	public void MakeAssignments() {
 		// Calculate the average number of customers per teller for each branch
 		BranchCustomersPerTeller = new ArrayList<Integer>(NumberOfBranches);
 		for (i = 0; i < NumberOfBranches; i++) {
 			BranchCustomersPerTeller.add(BranchCustomers[i] / BranchTellers[i]);
 		}
-
+		
 		// Determines where to send floating tellers and displays that information
 		System.out.println("\nResults:\n--------");
 		while (BranchNames.size() > 0 && FloatingTellerNames.size() > 0) {
@@ -131,7 +129,7 @@ public class FloatingTellerAssignments {
 		}
 	}
 
-	// Main Method
+	// Main Method 
 	public static void main(String[] args) {
 		FloatingTellerAssignments fta = new FloatingTellerAssignments();
 		fta.IntroScript();
