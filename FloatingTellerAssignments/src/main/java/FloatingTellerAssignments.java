@@ -1,3 +1,4 @@
+
 // Programmed by Jacob Roberson
 /**
  * @author Jacob Roberson This program is used to assign floating tellers to
@@ -92,6 +93,11 @@ public class FloatingTellerAssignments {
 			System.out.println("How many tellers does " + BranchNames.get(i)
 					+ " have working on this day? (Please enter a whole number)");
 			BranchTellers[i] = Integer.parseInt(sc.nextLine());
+			// Stop program if an integer is not input
+			if (BranchCustomers[i] <= 0 || BranchTellers[i] <= 0) {
+				System.out.println("ERROR: You did not enter an integer. Please rerun the program");
+				System.exit(0);
+			}
 		}
 
 		// Display the data entered
