@@ -1,13 +1,13 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
-
 // Programmed by Jacob Roberson
 /**
  * @author Jacob Roberson This program is used to assign floating tellers to
  *         branches based on need.
  */
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
 public class FloatingTellerAssignments {
 	// Initialize scanner
 	Scanner sc = new Scanner(System.in);
@@ -43,8 +43,15 @@ public class FloatingTellerAssignments {
 	public void FloatingTellerInput() {
 		// Receive input from user on the number of available floating tellers
 		System.out.println("Please enter the number of Floating Tellers available on this day: ");
-		NumberOfFloatingTellers = Integer.parseInt(sc.nextLine());
-		FloatingTellerNames = new ArrayList<String>(NumberOfFloatingTellers);
+		try {
+			NumberOfFloatingTellers = Integer.parseInt(sc.nextLine());
+			FloatingTellerNames = new ArrayList<String>(NumberOfFloatingTellers);
+		}
+		// Stop program if an integer is not input
+		catch (IllegalArgumentException e) {
+			System.out.println("ERROR: You did not enter an integer. Please rerun the program");
+			System.exit(0);
+		}
 
 		// Receive input from user on the names of the floating tellers
 		for (i = 0; i < NumberOfFloatingTellers; i++) {
