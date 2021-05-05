@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,6 +27,8 @@ public class FloatingTellerAssignments {
 	int[] BranchCustomers;
 	// Stores the number of tellers already working at each branch
 	int[] BranchTellers;
+	// Stores the average number of customers per teller for each branch
+	List<Integer> BranchCustomersPerTeller;
 
 	// Introduction Script that runs at the start of the program
 	public void IntroScript() {
@@ -89,7 +92,23 @@ public class FloatingTellerAssignments {
 	// Calculates the average number of customers per teller for each branch and
 	// assigns floating tellers
 	public void MakeAssignments() {
+		// Calculate the average number of customers per teller for each branch
+		BranchCustomersPerTeller = new ArrayList<Integer>(NumberOfBranches);
+		for (i = 0; i < NumberOfBranches; i++) {
+			BranchCustomersPerTeller.add(BranchCustomers[i] / BranchTellers[i]);
+		}
 
+		// Determines where to send floating tellers and displays that information
+		System.out.println("\nResults:\n--------");
+		while (BranchNames.size() > 0 && FloatingTellerNames.size() > 0) {
+			int max = Collections.max(BranchCustomersPerTeller);
+			int retval = BranchCustomersPerTeller.indexOf(max);
+			System.out.println("Send " + FloatingTellerNames.get(0) + " to the " + BranchNames.get(retval) + " branch");
+			// Remove elements in the lists to avoid double scheduling
+			BranchCustomersPerTeller.remove(retval);
+			FloatingTellerNames.remove(0);
+			BranchNames.remove(retval);
+		}
 	}
 
 	// Main Method
