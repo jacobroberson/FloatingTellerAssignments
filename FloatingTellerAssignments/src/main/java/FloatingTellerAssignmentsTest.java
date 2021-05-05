@@ -146,4 +146,29 @@ public class FloatingTellerAssignmentsTest {
 		}
 		assertEquals("ERROR: You did not enter an integer. Please rerun the program", output);
 	}
+	
+	@Test
+	// valid input for both BranchCustomers and BranchTellers
+	public void BranchesInputTestBothInteger() {
+		String output = null;
+		try {
+			int NumberOfBranches = 3;
+			List<String> BranchNames = new ArrayList<String>(NumberOfBranches);
+			int[] BranchCustomers = new int[NumberOfBranches];
+			int[] BranchTellers = new int[NumberOfBranches];
+		}
+		// Stop program if an integer is not input
+		catch (IllegalArgumentException e) {
+			output = "ERROR: You did not enter an integer. Please rerun the program";
+		}
+		int BranchCustomers = 256;
+		int BranchTellers = 13;
+		if(BranchCustomers <= 0 || BranchTellers <= 0) {
+			output = "ERROR: You did not enter an integer. Please rerun the program";
+		}
+		else {
+			output = "Success!";
+		}
+		assertEquals("Success!", output);
+	}
 }
